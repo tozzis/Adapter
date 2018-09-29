@@ -1,0 +1,697 @@
+{
+	"info": {
+		"_postman_id": "b38cfb24-cff3-48c8-b66c-48463083ff2f",
+		"name": "Adapter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "NewUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "88df0200-050e-46d8-a654-24c4a08230c3",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"create new user\",function(){",
+									"    const jsonData = pm.response.json();",
+									"    const firstname = typeof(jsonData.firstname);",
+									"    const lastname = typeof(jsonData.lastname);",
+									"    ",
+									"    const string = 'string';",
+									"    ",
+									"    pm.test(\"firstName is string\",()=>{",
+									"        pm.expect(firstname).to.eql(string);",
+									"    });",
+									"    ",
+									"    pm.test(\"lastName is string\",()=>{",
+									"        pm.expect(lastname).to.eql(string);",
+									"    });",
+									"    ",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstname\":\"Patcharapol\",\n\t\"lastname\":\"Yothapirom\"\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:9990/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9990",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f8f71ef6-1129-41ba-89fc-285e8a844681",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"get all users\",function(){",
+									"    const jsonData = pm.response.json();",
+									"    ",
+									"    pm.test(\"data is object\",()=>{",
+									"        const data = typeof(jsonData);",
+									"        const object = 'object';",
+									"        pm.expect(data).to.eql(object);",
+									"    });",
+									"    ",
+									"     pm.test(\"data in array\",()=>{",
+									"        const dataInArray = jsonData[0];",
+									"        const firstname = typeof(dataInArray.firstname);",
+									"        const lastname = typeof(dataInArray.lastname);",
+									"        ",
+									"        const string = 'string';",
+									"        ",
+									"        pm.test(\"firstname is string\",()=>{",
+									"            pm.expect(firstname).to.eql(string);",
+									"        });",
+									"        ",
+									"        pm.test(\"lastname is string\",()=>{",
+									"            pm.expect(lastname).to.eql(string);",
+									"        });",
+									"    ",
+									"     });",
+									"     ",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:9990/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9990",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cb299923-2073-45f6-babe-90e749e4457f",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"get user\",function(){",
+									"    const jsonData = pm.response.json();",
+									"    const firstname = typeof(jsonData.firstname);",
+									"    const lastname = typeof(jsonData.lastname);",
+									"    ",
+									"    const string = 'string';",
+									"    ",
+									"    pm.test(\"firstName is string\",()=>{",
+									"        pm.expect(firstname).to.eql(string);",
+									"    });",
+									"    ",
+									"    pm.test(\"lastName is string\",()=>{",
+									"        pm.expect(lastname).to.eql(string);",
+									"    });",
+									"    ",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:9990/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9990",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "NewPost",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "74e10a8a-150d-45a3-b294-e61a9586bfa1",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"create new post\",function(){",
+									"    const jsonData = pm.response.json();",
+									"    ",
+									"    const title = typeof(jsonData.title);",
+									"    const description = typeof(jsonData.description);",
+									"    const user = typeof(jsonData.user);",
+									"    ",
+									"    const string = 'string';",
+									"    const object = 'object';",
+									"    ",
+									"    pm.test(\"title is string\",()=>{",
+									"        pm.expect(title).to.eql(string);",
+									"    });",
+									"    ",
+									"    pm.test(\"description is string\",()=>{",
+									"        pm.expect(description).to.eql(string);",
+									"    });",
+									"    ",
+									"    pm.test(\"user is object\",()=>{",
+									"        pm.expect(user).to.eql(object);",
+									"    });",
+									"    ",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"Hello\",\n\t\"description\":\"create post\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9991/post/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9991",
+							"path": [
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllPost",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4444b24b-c93c-4759-a8ef-2d5f9ebc6cf5",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "12910e8a-3e44-4702-941d-6f533cac0ffd",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"get all posts\",function(){",
+									"    const jsonData = pm.response.json();",
+									"    ",
+									"    const string = 'string';",
+									"    const object = 'object';",
+									"    ",
+									"    pm.test(\"data is object\",()=>{",
+									"        const data = typeof(jsonData);",
+									"        pm.expect(data).to.eql(object);",
+									"    });",
+									"    ",
+									"    pm.test(\"data in array\",()=>{",
+									"        const dataInArray = jsonData[0];",
+									"        const title = typeof(dataInArray.title);",
+									"        const description = typeof(dataInArray.description);",
+									"        const user = typeof(dataInArray.user);",
+									"        const comment = typeof(dataInArray.comment);",
+									"        ",
+									"        pm.test(\"title is string\",()=>{",
+									"            pm.expect(title).to.eql(string);",
+									"        });",
+									"    ",
+									"        pm.test(\"description is string\",()=>{",
+									"            pm.expect(description).to.eql(string);",
+									"        });",
+									"    ",
+									"        pm.test(\"user is object\",()=>{",
+									"            pm.expect(user).to.eql(object);",
+									"        });",
+									"        ",
+									"        pm.test(\"comment is object\",()=>{",
+									"            pm.expect(comment).to.eql(object);",
+									"        });",
+									"        ",
+									"    });",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:9991/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9991",
+							"path": [
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPostById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "346cdc1b-182c-4466-865f-b88c8af886c4",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"get post\",function(){",
+									"    const jsonData = pm.response.json();",
+									"    ",
+									"    const title = typeof(jsonData.title);",
+									"    const description = typeof(jsonData.description);",
+									"    const user = typeof(jsonData.user);",
+									"    const comment = typeof(jsonData.comment);",
+									"    ",
+									"    const string = 'string';",
+									"    const object = 'object';",
+									"    ",
+									"    pm.test(\"title is string\",()=>{",
+									"        pm.expect(title).to.eql(string);",
+									"    });",
+									"    ",
+									"    pm.test(\"description is string\",()=>{",
+									"        pm.expect(description).to.eql(string);",
+									"    });",
+									"    ",
+									"    pm.test(\"user is object\",()=>{",
+									"        pm.expect(user).to.eql(object);",
+									"    });",
+									"    ",
+									"    pm.test(\"comment is object\",()=>{",
+									"        pm.expect(comment).to.eql(object);",
+									"    });",
+									"    ",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:9991/post/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9991",
+							"path": [
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetPostByUserId",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "72f65ed8-1ed6-4845-8e77-72fc1bd40f30",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "0d15de1e-06eb-4de4-a472-088d5bfe138f",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"get all posts by this user\",function(){",
+									"    const jsonData = pm.response.json();",
+									"    ",
+									"    const string = 'string';",
+									"    const object = 'object';",
+									"    ",
+									"    pm.test(\"data is object\",()=>{",
+									"        const data = typeof(jsonData);",
+									"        pm.expect(data).to.eql(object);",
+									"    });",
+									"    ",
+									"    pm.test(\"data in array\",()=>{",
+									"        const dataInArray = jsonData[0];",
+									"        const title = typeof(dataInArray.title);",
+									"        const description = typeof(dataInArray.description);",
+									"        const user = typeof(dataInArray.user);",
+									"        const comment = typeof(dataInArray.comment);",
+									"        ",
+									"        pm.test(\"title is string\",()=>{",
+									"            pm.expect(title).to.eql(string);",
+									"        });",
+									"    ",
+									"        pm.test(\"description is string\",()=>{",
+									"            pm.expect(description).to.eql(string);",
+									"        });",
+									"    ",
+									"        pm.test(\"user is object\",()=>{",
+									"            pm.expect(user).to.eql(object);",
+									"        });",
+									"        ",
+									"        pm.test(\"comment is object\",()=>{",
+									"            pm.expect(comment).to.eql(object);",
+									"        });",
+									"        ",
+									"    });",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:9991/post/1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9991",
+							"path": [
+								"post",
+								"1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "NewComment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3d3698fb-ad0f-4b60-b813-2cf6b92d0309",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"create new comment\",function(){",
+									"    const jsonData = pm.response.json();",
+									"    ",
+									"    const text = typeof(jsonData.text);",
+									"    const user = typeof(jsonData.user);",
+									"    ",
+									"    const string = 'string';",
+									"    const object = 'object';",
+									"    ",
+									"    pm.test(\"text is string\",()=>{",
+									"        pm.expect(text).to.eql(string);",
+									"    });",
+									"    ",
+									"    ",
+									"    pm.test(\"user is object\",()=>{",
+									"        pm.expect(user).to.eql(object);",
+									"    });",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\":\"Hello top\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9991/post/1/comment/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9991",
+							"path": [
+								"post",
+								"1",
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCommentByPostId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0181c961-f5da-4cf5-bf70-bc3e68b33f47",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"get all comment in post\",function(){",
+									"    const jsonData = pm.response.json();",
+									"    ",
+									"    const string = 'string';",
+									"    const object = 'object';",
+									"    ",
+									"    pm.test(\"data is object\",()=>{",
+									"        const data = typeof(jsonData);",
+									"        pm.expect(data).to.eql(object);",
+									"    });",
+									"    ",
+									"    pm.test(\"data in array\",()=>{",
+									"        const dataInArray = jsonData[0];",
+									"        const text = typeof(dataInArray.text);",
+									"        const user = typeof(dataInArray.user);",
+									"        ",
+									"        pm.test(\"text is string\",()=>{",
+									"            pm.expect(text).to.eql(string);",
+									"        });",
+									"    ",
+									"        pm.test(\"user is object\",()=>{",
+									"            pm.expect(user).to.eql(object);",
+									"        });",
+									"    ",
+									"    });",
+									"    ",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:9991/post/1/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9991",
+							"path": [
+								"post",
+								"1",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"item": [
+				{
+					"name": "DeleteCommentByCommentId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2f1d170a-06fd-48c0-998b-d76733d3f848",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Deleted ID Should be 1\",function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql(1);",
+									"})"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:9991/comment/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9991",
+							"path": [
+								"comment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletePostByPostId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b145d228-f009-40c4-9c54-e9c33dd3b5e8",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Deleted ID Should be 1\",function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql(1);",
+									"})"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:9991/post/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9991",
+							"path": [
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUserByUserId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5c3019d6-2bb8-4d47-9685-999b78183ea9",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Deleted ID Should be 1\",function(){",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql(1);",
+									"})"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:9990/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9990",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
